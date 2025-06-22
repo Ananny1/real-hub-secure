@@ -150,8 +150,16 @@ export default function Profile() {
           <section className="profile-section" data-aos="fade-up">
             <h2>Your Posts</h2>
             {myPosts.length === 0 ? (
-              <p className="profile-empty-msg">You haven't posted anything yet.</p>
+              <div className="profile-empty-state" data-aos="fade-in">
+                <img
+                  src="https://images.unsplash.com/photo-1587614382346-4ec1c9ff2c02?auto=format&fit=crop&w=800&q=80"
+                  alt="No posts"
+                  className="profile-empty-img"
+                />
+                <p className="profile-empty-msg">You haven't posted anything yet.</p>
+              </div>
             ) : (
+
               <div className="profile-section-scrollable">
                 <div className="profile-post-list">
                   {myPosts.map((post, idx) => (
@@ -164,13 +172,18 @@ export default function Profile() {
                     >
                       <img
                         src={
-                          post.image?.startsWith("http")
-                            ? post.image
-                            : `http://localhost:8080/uploads/${post.image}`
+                          post.image
+                            ? post.image.startsWith("http")
+                              ? post.image
+                              : post.image.startsWith("/")
+                                ? `http://localhost:8080${post.image}`
+                                : `http://localhost:8080/uploads/${post.image}`
+                            : "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
                         }
                         alt="Post"
                         className="profile-post-img"
                       />
+
                       <div className="profile-post-info">
                         <div className="profile-post-title">{post.title}</div>
                         <div className="profile-post-date">{post.created_at}</div>
