@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import '../../styles/PostPage.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function PostPage() {
     const { id } = useParams();
@@ -13,6 +15,9 @@ export default function PostPage() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        window.scrollTo(0, 0); // Always start at top
+        AOS.init({ duration: 600, once: true });
+        
         fetch(`http://localhost:8080/posts/${id}`, { credentials: "include" })
             .then(res => {
                 if (!res.ok) throw new Error("Post not found");
@@ -31,6 +36,11 @@ export default function PostPage() {
             .catch(err => setError(err.message))
             .finally(() => setLoadingComments(false));
     }, [id]);
+
+    // If you dynamically add comments, you can refresh AOS here
+    useEffect(() => {
+        AOS.refresh();
+    }, [comments]);
 
     const handleAddComment = (e) => {
         e.preventDefault();
@@ -59,7 +69,7 @@ export default function PostPage() {
 
     return (
         <main className="post-page-wrapper">
-            <div className="post-card">
+            <div className="post-card" data-aos="fade-up">
                 <img
                     src={
                         post.image
@@ -80,7 +90,7 @@ export default function PostPage() {
                 </div>
             </div>
 
-            <div className="comments-section">
+            <div className="comments-section" data-aos="fade-left">
                 <h3>Comments</h3>
                 {loadingComments ? (
                     <div className="loading">Loading comments...</div>
@@ -88,7 +98,7 @@ export default function PostPage() {
                     <div className="empty">No comments yet.</div>
                 ) : (
                     comments.map(comment => (
-                        <div key={comment.id} className="comment-card">
+                        <div key={comment.id} className="comment-card" data-aos="fade-up">
                             <div className="comment-author">{comment.username}</div>
                             <div className="comment-content">{comment.content}</div>
                             <div className="comment-meta">{comment.created_at}</div>
@@ -96,7 +106,7 @@ export default function PostPage() {
                     ))
                 )}
 
-                <form className="add-comment-form" onSubmit={handleAddComment}>
+                <form className="add-comment-form" onSubmit={handleAddComment} data-aos="fade-up">
                     <textarea
                         placeholder="Write your comment..."
                         value={commentText}

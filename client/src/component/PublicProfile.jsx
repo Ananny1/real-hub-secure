@@ -12,6 +12,7 @@ export default function PublicProfile() {
   const [canViewPosts, setCanViewPosts] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0); // <--- add this!
     // Fetch user public info
     fetch(`http://localhost:8080/users/${id}`, { credentials: "include" })
       .then(res => {

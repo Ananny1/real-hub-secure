@@ -7,14 +7,6 @@ import (
 )
 
 func UpdateVisibilityHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPatch {
-		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-		return
-	}
-
-	if r.Method != http.MethodPost {
-		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-	}
 
 	cookie, err := r.Cookie("session_id")
 	if err != nil {

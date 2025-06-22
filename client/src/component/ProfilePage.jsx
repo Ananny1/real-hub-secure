@@ -44,6 +44,7 @@ export default function Profile() {
   }, []);
 
   useEffect(() => {
+    window.scrollTo(0, 0); // <--- add this!
     AOS.refresh();
   }, [likedPosts, myPosts]);
 
@@ -88,21 +89,20 @@ export default function Profile() {
             </div>
 
             <div className="visibility-toggle" data-aos="fade-up">
-              <p>
-                Account visibility:{" "}
-                <strong className={visibility === "public" ? "public" : ""}>
-                  {visibility.toUpperCase()}
-                </strong>
-              </p>
+              <label className="visibility-label">
+                <span>Account visibility</span>
+                <span className={`visibility-status ${visibility}`}>{visibility.toUpperCase()}</span>
+              </label>
               <select
                 className="visibility-dropdown"
                 value={visibility}
-                onChange={(e) => updateVisibility(e.target.value)}
+                onChange={e => updateVisibility(e.target.value)}
               >
                 <option value="private">Private</option>
                 <option value="public">Public</option>
               </select>
             </div>
+
           </div>
         </div>
 

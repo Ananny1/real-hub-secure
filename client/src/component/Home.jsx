@@ -11,6 +11,7 @@ export default function Home() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0); // <--- add this!
     AOS.init({ duration: 800, once: true });
 
     fetch("http://localhost:8080/posts", { credentials: "include" })

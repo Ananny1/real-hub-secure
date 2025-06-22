@@ -5,6 +5,7 @@ import "../../styles/About.css";
 
 export default function About() {
   useEffect(() => {
+    window.scrollTo(0, 0); // <--- add this!
     AOS.init({ duration: 1000 });
   }, []);
 

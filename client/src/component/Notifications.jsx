@@ -9,6 +9,7 @@ export default function NotificationsDashboard() {
   const wsRef = useRef(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0); // <--- add this!
     AOS.init({ duration: 600, once: true });
 
     fetch("http://localhost:8080/notifications", { credentials: "include" })

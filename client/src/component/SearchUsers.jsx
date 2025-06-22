@@ -11,6 +11,7 @@ export default function SearchUsers() {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    window.scrollTo(0, 0); // <--- add this!
     AOS.init({ duration: 600, once: true });
   }, []);
 
