@@ -1,0 +1,161 @@
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal {
+  background: #1f1f1f;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  width: 100%;
+  max-width: 480px;
+  padding: 28px 24px;
+  color: #eaeaea;
+}
+
+.modal h2 {
+  margin-bottom: 16px;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #f0f0f0;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Inputs */
+.modal input[type="text"],
+.modal textarea {
+  background: #2a2a2a;
+  color: #f0f0f0;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.modal input::placeholder,
+.modal textarea::placeholder {
+  color: #777;
+}
+
+.modal input:focus,
+.modal textarea:focus {
+  border-color: #888;
+  outline: none;
+}
+
+.modal textarea {
+  min-height: 100px;
+  max-height: 240px;
+  resize: vertical;
+}
+
+/* File input */
+.file-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+input[type="file"] {
+  background: #2e2e2e;
+  color: #ccc;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  padding: 8px;
+  border: 1px solid #444;
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+  background: #444;
+  color: #f5f5f5;
+  padding: 6px 12px;
+  margin-right: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: #666;
+}
+
+.image-preview {
+  margin-top: 6px;
+  max-width: 100%;
+  max-height: 180px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Button row */
+.modal-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+/* Primary action button */
+.modal button[type="submit"] {
+  background: #4c4cff;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 9px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s;
+}
+
+.modal button[type="submit"]:hover {
+  background: #6464ff;
+  transform: scale(1.03);
+}
+
+/* Cancel button */
+.modal button[type="button"] {
+  background: transparent;
+  color: #aaa;
+  border: 1px solid #444;
+  padding: 9px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.modal button[type="button"]:hover {
+  background: #2a2a2a;
+  border-color: #666;
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .modal {
+    padding: 20px 16px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal button {
+    width: 100%;
+  }
+}

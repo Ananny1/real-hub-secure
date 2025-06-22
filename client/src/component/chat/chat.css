@@ -1,0 +1,383 @@
+/* --------------- Layout --------------- */
+.chat-page {
+    display: flex;
+    height: 100vh;
+    margin-left: 240px;
+    background: #000;  /* pure black */
+    color: #f5f5f5;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+.chat-wrapper {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+/* --------------- User List --------------- */
+.user-list {
+    width: 240px;
+    background: #000;
+    padding: 26px 0 12px 0;
+    border-right: 1px solid #18181a;
+    overflow-y: auto;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.user-list h3 {
+    font-size: 17px;
+    margin: 0 0 18px 28px;
+    color: #fafafa;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.user-list-item {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 9px 16px 9px 18px;
+    margin: 0 12px;
+    border-radius: 13px;
+    cursor: pointer;
+    color: #e0e6eb;
+    background: #18181a;
+    font-size: 1.07rem;
+    font-weight: 500;
+    box-shadow: 0 2px 8px 0 #0004;
+    transition: background 0.16s, color 0.16s, box-shadow 0.18s;
+    position: relative;
+    margin-right: 30px;
+}
+
+.user-list-item:hover,
+.user-list-item:focus-visible {
+    background: #23232a;
+    color: #071c2b;
+    box-shadow: 0 4px 14px 0 #1290e72a;
+    outline: none;
+}
+
+.user-list-item.active {
+    background: linear-gradient(93deg, #151a2b 60%, #1f2937 100%);
+    color: #36a1ff;
+    box-shadow: 0 2px 10px #1290e77c;
+}
+
+.user-list-item .user-status-dot {
+    width: 14px;
+    height: 14px;
+    background: linear-gradient(120deg, #13e233 50%, #07b94b 100%);
+    border-radius: 50%;
+    border: 2.2px solid #101012;
+    box-shadow: 0 1px 4px #0004;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+.user-list-item .user-name {
+    font-weight: 500;
+    color: #47aaff;
+    transition: color 0.17s;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-list-item:hover .user-name {
+    color: #33aaff;
+}
+
+.user-list-empty {
+    color: #888;
+    font-size: 15px;
+    padding: 16px 28px;
+    opacity: 0.8;
+}
+
+/* --------------- Chat Main Area --------------- */
+.chat-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #000; /* pure black */
+    max-height: 100%;
+    min-width: 0;
+}
+
+.chat-box {
+    flex: 1;
+    padding: 24px 28px 12px 28px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    scroll-behavior: smooth;
+    background: #000;
+}
+
+.chat-box::-webkit-scrollbar,
+.user-list::-webkit-scrollbar {
+    width: 6px;
+}
+.chat-box::-webkit-scrollbar-thumb,
+.user-list::-webkit-scrollbar-thumb {
+    background: #232329;
+    border-radius: 3px;
+}
+
+/* --------------- Messages --------------- */
+.chat-message {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+   max-width: 80%;    /* wider */
+    padding: 16px 26px;  /* thicker bubble (was 14px 18px before) */
+    margin-bottom: 2px;
+    border-radius: 18px;
+    font-size: 1.01rem;
+    word-break: break-word;
+    transition: background 0.18s;
+    box-shadow: 0 2px 10px #0007;
+}
+
+.chat-message.sent {
+    background: linear-gradient(90deg, #23262f 60%, #191c21 100%);
+    color: #fafbfc;
+    margin-left: auto;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 13px;
+    transition: background 0.18s;
+}
+
+.chat-message.sent:hover {
+    background: linear-gradient(90deg, #30333b 75%, #23262f 100%);
+}
+
+.chat-message.received {
+    background: #181818;
+    color: #f5f5f5;
+    margin-right: auto;
+    border-bottom-left-radius: 6px;
+}
+
+.chat-message.received:hover {
+    background: #232323;
+}
+
+.message-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ff6b35 40%, #f7931e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    box-shadow: 0 1px 3px #0003;
+}
+
+.message-content {
+    padding: 14px 18px;
+    border-radius: 18px;
+    color: #f5f5f5;
+    font-size: 15px;
+    line-height: 1.5;
+    position: relative;
+    transition: background 0.15s;
+}
+
+/* --------------- Image Messages --------------- */
+.chat-image {
+    max-width: 260px;
+    max-height: 320px;
+    width: auto;
+    height: auto;
+    border-radius: 14px;
+    object-fit: cover;
+    display: block;
+    margin: 4px 0;
+    box-shadow: 0 4px 12px #0005;
+    transition: transform 0.18s, box-shadow 0.18s;
+    cursor: pointer;
+}
+.chat-image:hover {
+    transform: scale(1.04);
+    box-shadow: 0 6px 18px #1290e7a9;
+}
+.chat-message.sent .chat-image {
+    margin-left: auto;
+}
+.chat-message.received .chat-image {
+    margin-right: auto;
+}
+.chat-message .message-text {
+    margin-top: 6px;
+    font-size: 1rem;
+}
+.chat-message.image-only {
+    padding: 8px;
+    background: transparent;
+    max-width: 280px;
+}
+
+/* --------------- Input Form (MessageInput) --------------- */
+.message-input-form {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 24px;
+    border-top: 1px solid #181818;
+    background: #000; /* pure black */
+    min-height: 68px;
+    position: relative;
+}
+
+.message-input-form input[type="text"] {
+    flex: 1;
+    background: #181818;
+    border: none;
+    color: #fafaff;
+    font-size: 15px;
+    padding: 13px 18px;
+    border-radius: 25px;
+    outline: none;
+    transition: background 0.18s, border 0.18s;
+    box-shadow: 0 1px 4px #0003;
+}
+.message-input-form input[type="text"]:focus {
+    background: #1a1a1a;
+    border: 1px solid #2196f3;
+}
+.message-input-form input[type="text"]::placeholder {
+    color: #8e8e8e;
+}
+
+/* Remove native file input look, keep only SVG icon */
+.message-input-form input[type="file"] {
+    display: none;
+}
+
+/* --------------- SVG File Button --------------- */
+.input-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.14s;
+    position: relative;
+    margin-left: 2px;
+}
+.input-btn:hover {
+    background: #181818;
+    box-shadow: 0 2px 6px #1290e733;
+}
+.input-btn img {
+    filter: brightness(0) invert(1);
+    transition: filter 0.2s;
+    width: 26px;
+    height: 26px;
+    display: block;
+}
+.input-btn.has-image img {
+    filter: brightness(0) invert(1) drop-shadow(0 0 6px #1290e7) saturate(2);
+}
+.input-btn:active {
+    background: #232323;
+}
+
+/* --------------- Send Button --------------- */
+.send-btn {
+    padding: 11px 26px;
+    background: linear-gradient(90deg, #1290e7 70%, #1f6ef8 100%);
+    color: #fff;
+    border: none;
+    border-radius: 23px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 15px;
+    box-shadow: 0 2px 8px #1290e711;
+    transition: background 0.16s, box-shadow 0.18s;
+}
+.send-btn:hover {
+    background: linear-gradient(90deg, #1877f2 70%, #1290e7 100%);
+    box-shadow: 0 2px 16px #1290e733;
+}
+.send-btn:active {
+    background: #232323;
+}
+
+/* --------------- Image Preview (Below Input) --------------- */
+.image-preview {
+    width: 100%;
+    margin-top: 8px;
+    text-align: left;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 32px;
+}
+.image-preview img {
+    max-width: 90px;
+    max-height: 90px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px #0004;
+    background: #111;
+    display: block;
+    border: 2px solid #262626;
+}
+.remove-preview-btn {
+    background: none;
+    border: none;
+    color: #ed4956;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 6px;
+    transition: color 0.15s;
+}
+.remove-preview-btn:hover {
+    color: #ff3b3b;
+}
+
+/* --------------- Mobile --------------- */
+@media (max-width: 768px) {
+    .chat-page {
+        margin-left: 0;
+    }
+    .chat-message {
+        max-width: 88%;
+    }
+    .chat-box {
+        padding: 12px 6px 8px 6px;
+        gap: 12px;
+    }
+    .chat-image {
+        max-width: 98vw;
+        max-height: 220px;
+    }
+    .user-list {
+        min-width: 0;
+        width: 50vw;
+    }
+    .message-input-form {
+        padding: 10px 5px;
+        gap: 7px;
+        min-height: 58px;
+    }
+}

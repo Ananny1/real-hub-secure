@@ -1,0 +1,35 @@
+.fab-create-post {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  user-select: none;
+}
+
+.fab-create-post:hover,
+.fab-create-post:focus {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  outline: none;
+}
+
+.fab-icon {
+  display: block;
+  font-size: 2rem;
+  line-height: 1;
+  margin-top: -1px;
+}

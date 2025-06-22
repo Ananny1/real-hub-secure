@@ -1,0 +1,233 @@
+.post-card {
+  background: #181818;
+  border-radius: 20px; /* sharper */
+  border: 1px solid #2c2c2c;
+  max-width: 460px;
+  width: 95%;
+  margin: 18px auto;
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 0 0 transparent;
+}
+
+
+.post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.03);
+}
+.home-container {
+  margin-left: 240px;
+  /* Adjust based on sidebar width */
+  width: 100%;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    margin-left: 0;
+    padding: 12px;
+  }
+}
+
+.main-layout {
+  display: flex;
+}
+
+
+.post-image {
+  width: 100%;
+  height: 240px; /* 👈 Limit height */
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.post-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f1f1f1;
+  padding: 12px 16px 4px;
+}
+
+.post-body {
+  font-size: 0.95rem;
+  color: #cfcfcf;
+  padding: 4px 16px 0;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.post-meta {
+  font-size: 0.8rem;
+  color: #777;
+  padding: 4px 16px 12px;
+}
+
+.like-dislike-row {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px 12px;
+  border-top: 1px solid #2a2a2a;
+  margin-top: 8px;
+}
+/* Buttons */
+.like-btn,
+.dislike-btn {
+  background: none;
+  border: none;
+  font-weight: 500;
+  padding: 10px 20px 14px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #333;
+  transition: background 0.1s;
+  outline: none;
+  color: #f5f5f5;
+}
+
+/* Icons */
+.like-icon,
+.dislike-icon {
+  width: 33px;
+  height: 26px;
+  margin-right: 8px;
+  filter: grayscale(60%) brightness(0.9);
+  transition: filter 0.1s, transform 0.2s;
+}
+
+.dislike-icon {
+  transform: rotate(180deg);
+}
+
+.like-btn.liked .like-icon,
+.like-icon.liked {
+  filter: drop-shadow(0 0 12px #ffb3b3) grayscale(0%) brightness(1.25) !important;
+}
+
+.dislike-btn.disliked .dislike-icon,
+.dislike-icon.disliked {
+  filter: drop-shadow(0 0 12px #b3e0ff) grayscale(0%) brightness(1.1) !important;
+}
+
+.like-btn:disabled,
+.dislike-btn:disabled {
+  cursor: not-allowed;
+  filter: grayscale(80%) !important;
+  opacity: 0.4;
+}
+
+.like-btn:not(:disabled):hover .like-icon {
+  filter: drop-shadow(0 0 6px #ffb3b3) grayscale(20%);
+}
+
+.dislike-btn:not(:disabled):hover .dislike-icon {
+  filter: drop-shadow(0 0 6px #b3e0ff) grayscale(20%);
+}
+
+/* Comment Section */
+.comments-section {
+  background: #121212;
+  margin-top: 32px;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  padding: 30px 38px 22px 38px;
+  max-width: 630px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.comments-section h3 {
+  margin-top: 0;
+  color: #f5f5f5;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.comment-card {
+  background: #2a2a2a;
+  border-radius: 9px;
+  padding: 16px 18px 13px 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.comment-author {
+  font-weight: 600;
+  color: #f09433;
+  margin-bottom: 4px;
+}
+
+.comment-content {
+  font-size: 1rem;
+  margin-bottom: 7px;
+  color: #eeeeee;
+}
+
+.comment-meta {
+  font-size: 0.88rem;
+  color: #aaa;
+}
+
+/* Add Comment Form */
+.add-comment-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 12px;
+}
+
+.add-comment-form textarea {
+  resize: vertical;
+  min-height: 60px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1.5px solid #444;
+  font-size: 1rem;
+  background: #1a1a1a;
+  color: #f5f5f5;
+  transition: border 0.18s;
+}
+
+
+
+.add-comment-form textarea:focus {
+  outline: none;
+  border: 1.5px solid #f09433;
+}
+
+/* Submit Button with Instagram Gradient */
+.add-comment-form button {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #f09433 0%, #dc2743 50%, #bc1888 100%);
+  color: white;
+  font-weight: 700;
+  border: none;
+  padding: 7px 30px;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.18s, filter 0.18s;
+}
+
+.add-comment-form button:hover {
+  transform: scale(1.03);
+  filter: brightness(1.1);
+}
+
+.add-comment-form button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+.comment-error {
+  color: #ff6b6b;
+  font-size: 0.98rem;
+  margin-top: -6px;
+}

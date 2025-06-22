@@ -1,0 +1,124 @@
+/* Sidebar Navigation Styles */
+.side-nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 220px;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 10px;
+    border-right: 1px solid #262626;
+    z-index: 1000;
+}
+
+.side-nav-logo {
+    text-align: center;
+    margin-bottom: 36px;
+    font-family: 'Urbanist', 'Poppins', 'Segoe UI', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.2;
+    letter-spacing: 1.2px;
+}
+
+.brand-part-1 {
+    color: #ff3c3c;
+    text-shadow: 0 0 10px rgba(255, 60, 60, 0.4);
+}
+
+.brand-part-2 {
+    font-weight: 900;
+    background: linear-gradient(135deg, #ff3c3c, #ff914d, #fff200);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+
+.side-nav-items {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.side-nav-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 12px;
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.side-nav-item:hover {
+    background-color: #1f1f1f;
+    box-shadow: 0 0 12px rgba(255, 60, 60, 0.3);
+}
+
+.side-nav-item img {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    filter: brightness(0) invert(1);
+}
+
+.side-nav-item span {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+body, .main-content {
+    background-color: #121212;
+    color: white;
+    margin-left: 220px;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .chat-page {
+        margin-left: 60px;
+    }
+    
+    .side-nav-container {
+        width: 60px;
+    }
+    
+    .side-nav-item span {
+        display: none;
+    }
+    
+    .brand-part-1, .brand-part-2 {
+        font-size: 1.2rem;
+    }
+    
+    .user-list {
+        width: 280px;
+    }
+    
+    .chat-message {
+        max-width: 85%;
+    }
+    
+    .chat-image {
+        max-width: 200px;
+        max-height: 250px;
+    }
+    
+    .message-input-form {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    body, .main-content {
+        margin-left: 60px;
+    }
+}
